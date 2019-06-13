@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 	const int frameDelay = 1000 / FPS;
 
 	//unsigned integer 32bit 2^32 negative or positive
+	//Massive integer
 	Uint32 frameStart;
 	int frameTime;
 	    
