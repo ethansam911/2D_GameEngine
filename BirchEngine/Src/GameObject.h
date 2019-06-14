@@ -7,7 +7,7 @@
 class GameObject {
 
 public:
-	GameObject(const char* texturesheet, SDL_Renderer* ren);
+	GameObject(const char* texturesheet, SDL_Renderer* ren, int x, int y);
 	~GameObject();
 	//Each object has its own update function for its own specific behaviours
 	void Update();
@@ -17,6 +17,7 @@ private:
 	//Location where our object will be
 	int xpos;
 	int ypos;
+
 	SDL_Texture* objTexture;
 	//To display, we need SDL_Rectangle
 	SDL_Rect srcRect, destRect;

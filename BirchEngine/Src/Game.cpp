@@ -14,6 +14,8 @@
 */
 
 GameObject* player;
+GameObject* enemy;
+
 
 Game::Game()
 {}
@@ -42,7 +44,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		isRunning = true;
 	}
 
-	player = new GameObject("assets/player.png", renderer);
+	player = new GameObject("assets/player.png", renderer, 0, 0);
+	enemy = new GameObject("assets/enemy.png", renderer, 80, 80);
 }
 
 void Game::handleEvents()
@@ -64,6 +67,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	player->Update();
+	enemy->Update();
 }
 
 void Game::render()
@@ -72,6 +76,7 @@ void Game::render()
 	//srcrect rectangle part of rectangle you want to draw
 	//First NULL will use entire image, second NULL arg will draw to whole frame
 	player->Render();
+	enemy->Render();
 	SDL_RenderPresent(renderer);
 }
 
