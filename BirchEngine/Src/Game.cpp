@@ -1,11 +1,19 @@
 #include "Game.h"
 //Remember to include texture manager
 #include "TextureManager.h"
-   
-//Create a texture manager class that'll help us to load images
-SDL_Texture* playerTex;
-//Create our rectangles
-SDL_Rect srcR, destR;
+//include GameObject because we made a class for the object
+#include "GameObject.h"
+
+
+/*
+	We no longer need these because we made the GameObject class
+	//Create a texture manager class that'll help us to load images
+	SDL_Texture* playerTex;
+	//Create our rectangles
+	SDL_Rect srcR, destR;
+*/
+
+GameObject* player;
 
 Game::Game()
 {}
@@ -33,17 +41,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
-	/*
-	We use tmp because theis surface is only temporary
-	Notice how we don't need the below anymore because we made a new class for it
-	and we don't need to instantiate an object to call the function
-	
-		SDL_Surface* tmpSurface = IMG_Load("assets/player.png");
-		playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-		SDL_FreeSurface(tmpSurface);
-	*/
-	playerTex = TextureManager::LoadTexture("assets/player.png", renderer);
 
+	player = new GameObject("assets/player.png", renderer);
 }
 
 void Game::handleEvents()
@@ -61,21 +60,10 @@ void Game::handleEvents()
 		break;
 	}
 }
-
+//Changes made 06/14/2019 will place player on the screen!
 void Game::update()
 {
-	//srcR we can leave first, dstR we need ot change width and height
-	cnt++;
-	//This will draw our texture to the top left of our screen
-	destR.h = 64;
-	destR.w = 64;
-	//Now lets move this man, increase x value from zero
-	//starts from 0 and goes up every frame
-	//Next time we want to cap the framerate
-	destR.x = cnt;
-	//Notice how the delay reduces the speed of the frames
-
-	std::cout << cnt << std::endl;
+	player->Update();
 }
 
 void Game::render()
@@ -83,11 +71,11 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	//srcrect rectangle part of rectangle you want to draw
 	//First NULL will use entire image, second NULL arg will draw to whole frame
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+	player->Render();
 	SDL_RenderPresent(renderer);
 }
 
-void Game::clean()
+void Game::clean() 
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
