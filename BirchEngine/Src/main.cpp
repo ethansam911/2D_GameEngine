@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	game = new Game();
 	game->init("GameWindow", 800, 600, false);
 
-	while (game->running())
+	while (game->running())  
 	{
 		//Get the current runningtime in ms
 		//Remember from minecraft!

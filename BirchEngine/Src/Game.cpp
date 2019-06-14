@@ -1,4 +1,7 @@
 #include "Game.h"
+//Remember to include texture manager
+#include "TextureManager.h"
+   
 //Create a texture manager class that'll help us to load images
 SDL_Texture* playerTex;
 //Create our rectangles
@@ -30,11 +33,16 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
-	//We use tmp because theis surface is only temporary
-	SDL_Surface* tmpSurface = IMG_Load("assets/player.png");
-	playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-
-	SDL_FreeSurface(tmpSurface);
+	/*
+	We use tmp because theis surface is only temporary
+	Notice how we don't need the below anymore because we made a new class for it
+	and we don't need to instantiate an object to call the function
+	
+		SDL_Surface* tmpSurface = IMG_Load("assets/player.png");
+		playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+		SDL_FreeSurface(tmpSurface);
+	*/
+	playerTex = TextureManager::LoadTexture("assets/player.png", renderer);
 
 }
 
