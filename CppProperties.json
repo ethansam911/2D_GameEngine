@@ -6,6 +6,8 @@
       ],
       "name": "x86-Debug",
       "includePath": [
+        "${workspaceRoot}\\..\\..\\repo\\SDL2\\include",
+        "${workspaceRoot}\\..\\..\\repo\\SDL2\\include",
         "${env.INCLUDE}",
         "${workspaceRoot}\\**"
       ],

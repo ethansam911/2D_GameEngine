@@ -11,5 +11,4 @@ public:
 	*/
 	//Return an SDL_Texture pointer
 	static SDL_Texture* LoadTexture(const char* filename, SDL_Renderer* ren);
-
 };
