@@ -4,8 +4,8 @@
 //include GameObject because we made a class for the object
 #include "GameObject.h"
 
-
-/*
+   
+/*       
 	We no longer need these because we made the GameObject class
 	//Create a texture manager class that'll help us to load images
 	SDL_Texture* playerTex;
@@ -15,7 +15,8 @@
 
 GameObject* player;
 GameObject* enemy;
-
+//Initialize to nullptr because we haven't initialized SDL yet
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
 {}
@@ -45,8 +46,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		isRunning = true;
 	}
 
-	player = new GameObject("assets/player.png", renderer, 0, 0);
-	enemy = new GameObject("assets/enemy.png", renderer, 80, 80);
+	player = new GameObject("assets/player.png", 0, 0);
+	enemy = new GameObject("assets/enemy.png", 80, 80);
 }
 
 void Game::handleEvents()
@@ -72,7 +73,7 @@ void Game::update()
 }
 
 void Game::render()
-{
+{	//CLear the current renderer
 	SDL_RenderClear(renderer);
 	//srcrect rectangle part of rectangle you want to draw
 	//First NULL will use entire image, second NULL arg will draw to whole frame

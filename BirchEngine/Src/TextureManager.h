@@ -6,12 +6,13 @@
 
 class TextureManager {
 public:
-	/*
+	/*  
 		class function rather than member function
 		Don't need to instatntiate an object in each instance 
 		that we want to call this function
 	*/
 	//Return an SDL_Texture pointer
-	static SDL_Texture* LoadTexture(const char* filename, SDL_Renderer* ren);
+	// Filename is for the desired texture, renderer needed as well
+	static SDL_Texture* LoadTexture(const char* filename);
 };
 #endif

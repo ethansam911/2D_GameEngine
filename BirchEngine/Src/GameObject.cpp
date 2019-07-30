@@ -8,20 +8,21 @@
 */
 
 //Constructor
-GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren, int x, int y)
+GameObject::GameObject(const char* texturesheet, int x, int y)
 {
-	renderer = ren;
-	objTexture = TextureManager::LoadTexture(texturesheet, ren);
+	
+	objTexture = TextureManager::LoadTexture(texturesheet);
 	xpos = x;
 	ypos = y;
 }
 
 void GameObject::Update()
 {
+	//Move from the upper left to the lower right
 	xpos++;
 	ypos++;
 
-	srcRect.h = 32;
+	srcRect.h = 32;  
 	srcRect.w = 32;
 	srcRect.x = 0;
 	srcRect.y = 0;
@@ -34,5 +35,6 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-	SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
+	//Received from the static renderer
+	SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
 }

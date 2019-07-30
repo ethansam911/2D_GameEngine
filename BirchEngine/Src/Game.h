@@ -4,8 +4,8 @@
 #include "SDL.h"
 #include "SDL_image.h"     
 #include <iostream>
-
-class Game
+   
+class Game  
 {   
 public:
 	Game();
@@ -16,11 +16,15 @@ public:
 	bool running(){return isRunning;}
 	void render();
 	void clean();
+	static SDL_Renderer *renderer;
+
 private:
 	bool isRunning = false;
 	int cnt = 0;
+	//SDL_Window is the struct that holds all 
+	//info about the Window itself: size, position, 
+	//full screen, borders etc. (Below is a pointer to the window itself)
 	SDL_Window *window;
-	SDL_Renderer *renderer;
 };
 
 #endif 

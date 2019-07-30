@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	//Capping framerate
 	//60 is good because this is close to the refresh rate of our monitors
 	const int FPS = 60;
-
+	     
 	//If the frame rate is at 60 FPS, 
 	//each frame must take no less than 1/60th of a second.
 
@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
 	int frameTime;
 	    
 	game = new Game();
-	game->init("GameWindow", 800, 600, false);
+	//Since 600 doesn't divide by 32, we will pick 640
+	game->init("GameWindow", 800, 640, false);
 
 	while (game->running())  
 	{
