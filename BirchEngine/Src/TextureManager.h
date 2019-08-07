@@ -14,5 +14,6 @@ public:
 	//Return an SDL_Texture pointer
 	// Filename is for the desired texture, renderer needed as well
 	static SDL_Texture* LoadTexture(const char* filename);
+	static void Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest);
 };
 #endif
