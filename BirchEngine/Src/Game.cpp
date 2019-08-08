@@ -3,6 +3,8 @@
 #include "TextureManager.h"
 //include GameObject because we made a class for the object
 #include "GameObject.h"
+//We want to be able to use our tilemaps
+#include "Map.h"
 
    
 /*       
@@ -15,6 +17,8 @@
 
 GameObject* player;
 GameObject* enemy;
+Map* map;
+
 //Initialize to nullptr because we haven't initialized SDL yet
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -45,9 +49,11 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
-
+	//Tilemaps created YES! 8/8/2019
 	player = new GameObject("assets/player.png", 0, 0);
 	enemy = new GameObject("assets/enemy.png", 80, 80);
+	//Create a new map (aka our pixels)
+	map = new Map();
 }
 
 void Game::handleEvents()
@@ -70,11 +76,15 @@ void Game::update()
 {
 	player->Update();
 	enemy->Update();
+	//Potentially use an XML file or a txt file to load in a custom map
+
 }
 
 void Game::render()
-{	//CLear the current renderer
+{	//Clear the current renderer
 	SDL_RenderClear(renderer);
+	map->DrawMap();
+
 	//srcrect rectangle part of rectangle you want to draw
 	//First NULL will use entire image, second NULL arg will draw to whole frame
 	player->Render();
