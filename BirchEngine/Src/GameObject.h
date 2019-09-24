@@ -1,13 +1,14 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
-
 //Lets make the GameObject Class!
+//This will enable textures and charaters to be rendered to the screen
 #include "Game.h"   
 class GameObject {
 	 
 public:
 	GameObject(const char* texturesheet, int x, int y);
+	//Destructor
 	~GameObject();
 	//Each object has its own update function for its own specific behaviours
 	// This occurs when we declare a single GameObject

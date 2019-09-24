@@ -4,7 +4,8 @@
 
 //We want this texture manager to return an SDL texture
 
-class TextureManager {
+class TextureManager 
+{
 public:
 	/*  
 		class function rather than member function

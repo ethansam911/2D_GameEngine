@@ -1,4 +1,5 @@
 #include "Map.h"
+//Require the inclusion of textures
 #include "TextureManager.h"
 
 //20 rows 25 columns
@@ -69,9 +70,10 @@ void Map::DrawMap()
 		for (int col = 0; col < 25; col++)
 		{
 			type = map[row][col];
-
+			//32 bit scaling
 			dest.x = col * 32;
 			dest.y = row * 32;
+			//Select the type of texture, water, grass, dirt
 			switch (type)
 			{
 			case 0:
