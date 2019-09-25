@@ -9,9 +9,9 @@
    
 /*       
 	We no longer need these because we made the GameObject class
-	//Create a texture manager class that'll help us to load images
+	Create a texture manager class that'll help us to load images
 	SDL_Texture* playerTex;
-	//Create our rectangles
+	Create our rectangles
 	SDL_Rect srcR, destR;
 */
 

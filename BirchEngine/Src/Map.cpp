@@ -2,6 +2,7 @@
 //Require the inclusion of textures
 #include "TextureManager.h"
 
+//Remember to change this later
 //20 rows 25 columns
 //Video was not initially reversed
 int lvl1[20][25] = {
@@ -29,13 +30,13 @@ int lvl1[20][25] = {
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 
-	
 };
 
 // A default map is 
 //Default constructor
 Map::Map()
 {
+	//Load texture from file
 	dirt = TextureManager::LoadTexture("assets/dirt.png");
 	grass = TextureManager::LoadTexture("assets/grass.png");
 	water = TextureManager::LoadTexture("assets/water.png");
@@ -50,13 +51,8 @@ Map::Map()
 void Map::LoadMap(int arr[20][25])
 {
 	for (int row = 0; row < 20; row++)
-	{
 		for (int col = 0; col < 25; col++)
-		{
 			map[row][col] = arr[row][col];
-		}
-	}
-
 }
 
 
@@ -70,7 +66,7 @@ void Map::DrawMap()
 		for (int col = 0; col < 25; col++)
 		{
 			type = map[row][col];
-			//32 bit scaling
+			//32 bit scaling so that we're able to see the textures at the same size
 			dest.x = col * 32;
 			dest.y = row * 32;
 			//Select the type of texture, water, grass, dirt

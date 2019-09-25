@@ -1,9 +1,8 @@
 #ifndef  TEXTURE_MANAGER_H
 #define  TEXTURE_MANAGER_H
 #include "Game.h"
-
+//Simple Direct Layerupdate
 //We want this texture manager to return an SDL texture
-
 class TextureManager 
 {
 public:

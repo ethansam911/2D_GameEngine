@@ -47,9 +47,7 @@ int main(int argc, char *argv[])
 			//The result is much smoother because we allow for the compensation of 
 			//time between updated objects and visual change 
 		}
-
 	}
-
 	game->clean();
 	return 0;
 }
