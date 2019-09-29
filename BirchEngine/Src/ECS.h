@@ -67,6 +67,7 @@ public:
 	void update()
 	{
 		//Update the game screen
+		//Quick verson of a for loop
 		for (auto& c : components) c->update();
 		for (auto& c : components) c->draw();
 	}
@@ -74,5 +75,13 @@ public:
 	//const because this will never change
 	bool isActive() const {return active;}
 	void destroy() {active = false;}
+
+	template <typename T> bool hasComponenet() const
+	{
+		return componentBitSet[getComponentID<T>];
+	}
+	
+	template <typename T, typename... TArgs>
+
 
 };
